@@ -18,6 +18,6 @@ export type TodoDto={
 
 export const todoListApi={
 getTogoList:({page}:{page:number},{signal}:{signal:AbortSignal})=>{
-   return fetch(`${BASE_URL}/tasks?_page=${page}&_per_page=10`,{signal}).then(res=>res.json()) as Promise<PaginateResult<TodoDto>>
+   return fetch(`${BASE_URL}/tasks?_page=${page}&_per_page=4`,{signal}).then(res=>res.json()) as Promise<PaginateResult<TodoDto>>
 }
 }
