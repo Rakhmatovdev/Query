@@ -2,13 +2,103 @@
     "tasks": [
         {
             "id": "1",
-            "text": "todo",
+            "text": "Complete client report",
             "done": false
         },
         {
             "id": "2",
-            "text": "todo 2",
+            "text": "Prepare presentation slides",
+            "done": true
+        },
+        {
+            "id": "3",
+            "text": "Attend team meeting",
             "done": false
+        },
+        {
+            "id": "4",
+            "text": "Update project timeline",
+            "done": true
+        },
+        {
+            "id": "5",
+            "text": "Review code documentation",
+            "done": false
+        },
+        {
+            "id": "6",
+            "text": "Follow up with client",
+            "done": true
+        },
+        {
+            "id": "7",
+            "text": "Plan marketing strategy",
+            "done": false
+        },
+        {
+            "id": "8",
+            "text": "Analyze sales data",
+            "done": true
+        },
+        {
+            "id": "9",
+            "text": "Submit budget report",
+            "done": false
+        },
+        {
+            "id": "10",
+            "text": "Fix website bugs",
+            "done": true
+        },
+        {
+            "id": "11",
+            "text": "Test new software features",
+            "done": false
+        },
+        {
+            "id": "12",
+            "text": "Organize product launch event",
+            "done": true
+        },
+        {
+            "id": "13",
+            "text": "Write technical blog post",
+            "done": false
+        },
+        {
+            "id": "14",
+            "text": "Prepare financial audit",
+            "done": true
+        },
+        {
+            "id": "15",
+            "text": "Update client feedback",
+            "done": false
+        },
+        {
+            "id": "16",
+            "text": "Finalize quarterly report",
+            "done": true
+        },
+        {
+            "id": "17",
+            "text": "Schedule performance review",
+            "done": false
+        },
+        {
+            "id": "18",
+            "text": "Optimize website SEO",
+            "done": true
+        },
+        {
+            "id": "19",
+            "text": "Create social media content plan",
+            "done": false
+        },
+        {
+            "id": "20",
+            "text": "Conduct market research",
+            "done": true
         }
     ]
 }
