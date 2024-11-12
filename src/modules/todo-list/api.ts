@@ -18,16 +18,17 @@ export type TodoDto={
     }
 
 export const todoListApi={
+ baseKey:"tasks",
 
-getTodoListQueryOptions:({page}:{page:number})=>{
+getTodoListQueryOptions:()=>{
     return queryOptions({
-        queryKey:['tasks','list',{page}],
-        queryFn:(meta)=> jsonApiInstance<PaginateResult<TodoDto>>(`/tasks?_page=${page}&_per_page=4`,{signal:meta.signal}),
+        queryKey:[todoListApi.baseKey,'list'],
+        queryFn:(meta)=> jsonApiInstance<TodoDto>(`/tasks`,{signal:meta.signal}),
     })
 },
 getTodoListInfiniteQueryOptions:()=>{
     return infiniteQueryOptions({
-        queryKey:['tasks','list'],
+        queryKey:[todoListApi.baseKey,'list'],
         queryFn:(meta)=> jsonApiInstance<PaginateResult<TodoDto>>(`/tasks?_page=${meta.pageParam}&_per_page=4`,{signal:meta.signal}),
       initialPageParam:1,
       getNextPageParam:result=>result.next,

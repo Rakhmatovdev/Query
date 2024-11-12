@@ -1,16 +1,11 @@
-import { useMutation } from "@tanstack/react-query"
 import { useTodoList } from "./use-todo-list"
-import { todoListApi } from "./api"
-import { nanoid } from "nanoid"
-
+import { useCreateTodo } from './use-create-todo';
 
 
 const TodoList = () => {
-const {isLoading,error,todoItems,cursor}=useTodoList()
+const {isLoading,error,todoItems}=useTodoList()
 
-const createTodoMutation= useMutation({
-  mutationFn:todoListApi.createTodo
-})
+const {handleCreate}=useCreateTodo()
 
 if(isLoading){
     return <div>Loading...</div>
@@ -20,22 +15,6 @@ if(error){
     return <div className="">error: {JSON.stringify(error)}</div>
 }
 
-const handleCreate=(e:React.FormEvent<HTMLFormElement>)=>{
-const formData= new FormData(e.currentTarget)
-
-const text=String(formData.get('text') ?? '')
-
-createTodoMutation.mutate({
-  id: nanoid(),
-  done:false,
-  text,
-  userId:"1"
-
-
-})
-
-e.currentTarget.reset()
-}
 
   return (
     <div className="container mx-auto"><h1 className="text-3xl font-bold underline max-w-[1200px mt-10 mb-5  ">TodoList</h1> 
@@ -48,7 +27,7 @@ e.currentTarget.reset()
 
        <div className={"flex flex-col gap-4 mt-4"}> {todoItems?.map(todo=><div key={todo.id} className="border border-slate-300 rounded p-3">{todo.text}</div>)}
     </div>
-    {cursor}
+   
     </div>
   )
 }
