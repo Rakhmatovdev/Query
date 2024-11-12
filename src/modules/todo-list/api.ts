@@ -14,13 +14,14 @@ prev:number | null
 }
 
 export type TodoDto={
-    id:string,
-    text:string,
-    done:boolean
+    id:string;
+    text:string;
+    done:boolean;
+    userId:string;
     }
 
 export const todoListApi={
-    
+
 getTodoListQueryOptions:({page}:{page:number})=>{
     return queryOptions({
         queryKey:['tasks','list',{page}],
@@ -34,6 +35,24 @@ getTodoListInfiniteQueryOptions:()=>{
       initialPageParam:1,
       getNextPageParam:result=>result.next,
       select:result=>result.pages.flatMap(page=>page?.data) 
+    })
+}
+,
+createTodo:(data:TodoDto)=>{
+return jsonApiInstance<TodoDto>(`/tasks`,{
+    method:"POST",
+   json:data
+})
+},
+updateTodo:(id:string,data:Partial<TodoDto>)=>{
+    return jsonApiInstance<TodoDto>(`/tasks/${id}`,{
+        method:"PATCH",
+       json:data
+    })
+},
+deleteTodo:(id:string)=>{
+    return jsonApiInstance(`/tasks/${id}`,{
+        method:"DELETE",
     })
 }
 }
