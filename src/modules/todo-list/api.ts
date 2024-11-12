@@ -1,4 +1,5 @@
-import { infiniteQueryOptions } from "@tanstack/react-query"
+import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query"
+import { jsonApiInstance } from "../../shared/api/api-instance"
 
 const BASE_URL='http://localhost:3000'
 
@@ -19,13 +20,17 @@ export type TodoDto={
     }
 
 export const todoListApi={
-getTogoList:({page}:{page:number},{signal}:{signal:AbortSignal})=>{
-   return fetch(`${BASE_URL}/tasks?_page=${page}&_per_page=4`,{signal}).then(res=>res.json()) as Promise<PaginateResult<TodoDto>>
+    
+getTodoListQueryOptions:({page}:{page:number})=>{
+    return queryOptions({
+        queryKey:['tasks','list',{page}],
+        queryFn:(meta)=> jsonApiInstance<PaginateResult<TodoDto>>(`/tasks?_page=${page}&_per_page=4`,{signal:meta.signal}),
+    })
 },
 getTodoListInfiniteQueryOptions:()=>{
     return infiniteQueryOptions({
         queryKey:['tasks','list'],
-        queryFn:(meta)=>todoListApi.getTogoList({page:meta.pageParam},meta),
+        queryFn:(meta)=> jsonApiInstance<PaginateResult<TodoDto>>(`/tasks?_page=${meta.pageParam}&_per_page=4`,{signal:meta.signal}),
       initialPageParam:1,
       getNextPageParam:result=>result.next,
       select:result=>result.pages.flatMap(page=>page?.data) 
