@@ -5,7 +5,7 @@ import { useCreateTodo } from './use-create-todo';
 const TodoList = () => {
 const {isLoading,error,todoItems}=useTodoList()
 
-const {handleCreate}=useCreateTodo()
+const createTodo=useCreateTodo()
 
 if(isLoading){
     return <div>Loading...</div>
@@ -19,9 +19,9 @@ if(error){
   return (
     <div className="container mx-auto"><h1 className="text-3xl font-bold underline max-w-[1200px mt-10 mb-5  ">TodoList</h1> 
 
-<form className="flex gap-2 mb-5" onSubmit={handleCreate}>
+<form className="flex gap-2 mb-5" onSubmit={createTodo.handleCreate}>
 <input className="rounded p-2 border-teal-500 border" type="text" name="text" />
-<button className="rounded p-2 border-teal-500 border">Create</button>
+<button disabled={createTodo.isPending} className="rounded p-2 border-teal-500 border disabled:opacity-50">Create</button>
 </form>
 
 
