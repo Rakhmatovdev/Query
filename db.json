@@ -3,7 +3,7 @@
     {
       "id": "1",
       "text": "Complete client report",
-      "done": false,
+      "done": true,
       "userId": 1
     },
     {
@@ -13,22 +13,10 @@
       "userId": 2
     },
     {
-      "id": "3",
-      "text": "Attend team meeting",
-      "done": false,
-      "userId": 1
-    },
-    {
       "id": "5",
       "text": "Review code documentation",
       "done": false,
       "userId": 1
-    },
-    {
-      "id": "6",
-      "text": "Follow up with client",
-      "done": true,
-      "userId": 2
     },
     {
       "id": "7",
@@ -147,7 +135,7 @@
     {
       "id": "26",
       "text": "Review marketing proposals",
-      "done": true,
+      "done": false,
       "userId": 2
     },
     {
@@ -159,7 +147,7 @@
     {
       "id": "28",
       "text": "Review design mockups",
-      "done": true,
+      "done": false,
       "userId": 2
     },
     {
@@ -201,7 +189,7 @@
     {
       "id": "35",
       "text": "Conduct user surveys",
-      "done": false,
+      "done": true,
       "userId": 1
     },
     {
@@ -259,12 +247,6 @@
       "userId": 2
     },
     {
-      "id": "45",
-      "text": "Prepare business proposal",
-      "done": false,
-      "userId": 1
-    },
-    {
       "id": "46",
       "text": "Review employee feedback",
       "done": true,
@@ -297,7 +279,7 @@
     {
       "id": "51",
       "text": "Coordinate with legal team",
-      "done": false,
+      "done": true,
       "userId": 1
     },
     {
@@ -311,12 +293,6 @@
       "text": "Update internal guidelines",
       "done": false,
       "userId": 1
-    },
-    {
-      "id": "54",
-      "text": "Review security protocols",
-      "done": true,
-      "userId": 2
     },
     {
       "id": "55",
@@ -357,19 +333,13 @@
     {
       "id": "61",
       "text": "Develop training program",
-      "done": false,
-      "userId": 1
-    },
-    {
-      "id": "62",
-      "text": "Plan investor presentation",
       "done": true,
-      "userId": 2
+      "userId": 1
     },
     {
       "id": "63",
       "text": "Research new markets",
-      "done": false,
+      "done": true,
       "userId": 1
     },
     {
@@ -381,26 +351,32 @@
     {
       "id": "65",
       "text": "Update social media strategy",
-      "done": false,
+      "done": true,
       "userId": 1
     },
     {
       "id": "66",
       "text": "Write project proposal",
-      "done": true,
-      "userId": 2
-    },
-    {
-      "id": "68",
-      "text": "Prepare investor report",
-      "done": true,
+      "done": false,
       "userId": 2
     },
     {
       "id": "71",
       "text": "Update software licenses",
-      "done": false,
+      "done": true,
       "userId": 1
+    },
+    {
+      "id": "yvvy1Ym2F0RVADy4x1DXR",
+      "done": false,
+      "text": "Jasurinc 2",
+      "userId": "1"
+    },
+    {
+      "id": "oGjDgFBoUQSxXl06QuEDm",
+      "done": true,
+      "text": "Jasurinc ",
+      "userId": "1"
     }
   ]
 }

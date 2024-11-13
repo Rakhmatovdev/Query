@@ -1,6 +1,7 @@
 import { useTodoList } from "./use-todo-list"
 import { useCreateTodo } from './use-create-todo';
 import { useDeleteTodo } from "./use-delete-todo";
+import { useToggleTodo } from "./use-toggle-todo";
 
 
 const TodoList = () => {
@@ -8,6 +9,7 @@ const {isLoading,error,todoItems}=useTodoList()
 
 const createTodo=useCreateTodo()
 const deleteTodo=useDeleteTodo()
+const {toggleTodo}=useToggleTodo()
 
 if(isLoading){
     return <div>Loading...</div>
@@ -27,7 +29,14 @@ if(error){
 </form>
 
 
-       <div className={"flex flex-col gap-4 mt-4"}> {todoItems?.map(todo=><div key={todo.id} className="border border-slate-300 rounded p-3 flex justify-between items-center">{todo.text}
+       <div className={"flex flex-col gap-4 mt-4"}> {todoItems?.map(todo=><div key={todo.id} className="border border-slate-300 rounded p-3 flex justify-between items-center">
+        <div className="flex gap-10">
+          <input type="checkbox"  checked={todo.done} onChange={()=>toggleTodo(todo.id,todo.done)}/>
+            {todo.text} 
+
+        </div>
+     
+
         <button disabled={deleteTodo.isPending(todo.id)} className="text-rose-500 font-bold  disabled:text-red-300 " onClick={()=>deleteTodo.handleDelete(todo.id)}>Delete</button>
        </div>)}
     </div>
