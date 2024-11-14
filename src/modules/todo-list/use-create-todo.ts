@@ -1,33 +1,18 @@
-import { useMutation } from "@tanstack/react-query";
-import { todoListApi } from "./api";
-import { nanoid } from "nanoid";
-import { useQueryClient } from "@tanstack/react-query";
+import { useAppDispatch } from "../../shared/redux";
+import { CreateTodoThunk, useCreateLoading } from "./create-todo-thunk";
 
 export function useCreateTodo() {
-  const queryClient = useQueryClient();
+  const appDispatch =useAppDispatch()
+ const isLoading=useCreateLoading()
 
-  const createTodoMutation = useMutation({
-    mutationFn: todoListApi.createTodo,
-   async onSettled() {
-     await queryClient.invalidateQueries({ queryKey: [todoListApi.baseKey] });
-    }
-  });
-
-  const handleCreate = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const text = String(formData.get("text") ?? "");
-
-    createTodoMutation.mutate({
-      id: nanoid(),
-      done: false,
-      text,
-      userId: "1"
-    });
-
+    await appDispatch(CreateTodoThunk(text))
     e.currentTarget.reset();
   };
 
-  return { handleCreate, isPending: createTodoMutation.isPending };
+  return { handleCreate,isLoading };
 }

@@ -25,7 +25,7 @@ if(error){
 
 <form className="flex gap-2 mb-5" onSubmit={createTodo.handleCreate}>
 <input className="rounded p-2 border-teal-500 border" type="text" name="text" />
-<button disabled={createTodo.isPending} className="rounded p-2 border-teal-500 border disabled:opacity-50">Create</button>
+<button disabled={createTodo.isLoading!} className="rounded p-2 border-teal-500 border disabled:opacity-50">Create</button>
 </form>
 
 

@@ -48,4 +48,4 @@ export default tseslint.config({
   },
 })
 ```
-2.25
+3.24
