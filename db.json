@@ -1,4 +1,26 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "login": "alice",
+      "password": "password123"
+    },
+    {
+      "id": "2",
+      "login": "bob",
+      "password": "secure456"
+    },
+    {
+      "id": "3",
+      "login": "carol",
+      "password": "mypassword789"
+    },
+    {
+      "id": "4",
+      "login": "Jasur",
+      "password": "Jasurbek3@"
+    }
+  ],
   "tasks": [
     {
       "id": "1",
@@ -327,7 +349,7 @@
     {
       "id": "60",
       "text": "Analyze customer feedback",
-      "done": true,
+      "done": false,
       "userId": 2
     },
     {
@@ -376,6 +398,12 @@
       "id": "oGjDgFBoUQSxXl06QuEDm",
       "done": true,
       "text": "Jasurinc ",
+      "userId": "1"
+    },
+    {
+      "id": "O49L3CK6gWXVODCGGkVhc",
+      "done": false,
+      "text": "Attend team meeting Parth 2",
       "userId": "1"
     }
   ]
