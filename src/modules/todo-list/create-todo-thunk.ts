@@ -7,7 +7,7 @@ import { authSlice } from '../auth/auth.slice';
 import { authApi } from '../auth/api';
 
 export const CreateTodoThunk=(text:string):AppThunk=> async(
-    dispatch,getStata
+    _,getStata
 )=>{
 const userId=authSlice.selectors.userId(getStata())
 
