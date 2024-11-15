@@ -12,7 +12,7 @@ const createTodo=useCreateTodo()
 const deleteTodo=useDeleteTodo()
 const {toggleTodo}=useToggleTodo()
   return (
-    <div className="container mx-auto"><h1 className="text-3xl font-bold underline max-w-[1200px mt-10 mb-5  ">TodoList: <span className="text-teal-500 ">{user.login}</span></h1> 
+    <div className="container mx-auto"><h1 className="text-3xl font-bold underline max-w-[1200px mt-10 mb-5  ">TodoList: Owner <span className="text-teal-500 ">{user.login}</span></h1> 
 <form className="flex gap-2 mb-5" onSubmit={createTodo.handleCreate}>
 <input className="rounded p-2 border-teal-500 border" type="text" name="text" />
 <button disabled={createTodo.isLoading!} className="rounded p-2 border-teal-500 border disabled:opacity-50">Create</button>
