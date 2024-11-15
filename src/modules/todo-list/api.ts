@@ -23,7 +23,7 @@ export const todoListApi={
 getTodoListQueryOptions:()=>{
     return queryOptions({
         queryKey:[todoListApi.baseKey,'list'],
-        queryFn:(meta)=> jsonApiInstance<TodoDto[]>(`/tasks`,{signal:meta.signal}),
+        queryFn:(meta)=> jsonApiInstance<TodoDto[]>(`/tasks`,{signal:meta.signal})
     })
 },
 getTodoListInfiniteQueryOptions:()=>{

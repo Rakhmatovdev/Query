@@ -6,12 +6,11 @@ export function useCreateTodo() {
  const isLoading=useCreateLoading()
 
   const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const text = String(formData.get("text") ?? "");
-    await appDispatch(CreateTodoThunk(text))
-    e.currentTarget.reset();
+    const formData = await new FormData(e.currentTarget);
+   await e.preventDefault();
+    const text = await String(formData.get("text") ?? "");
+   await  appDispatch(CreateTodoThunk(text))
+   await e.currentTarget.reset();
   };
 
   return { handleCreate,isLoading };
