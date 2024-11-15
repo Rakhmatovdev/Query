@@ -4,7 +4,8 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     //serverga hadeb so'rov yuboravermasdan keshdan oladi
     queries: {
-      staleTime: 1 * 60 * 1000
+      staleTime: 1 * 60 * 1000,
+      gcTime:24*60*60*1000
     }
   } //
 });
