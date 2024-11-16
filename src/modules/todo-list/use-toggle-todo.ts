@@ -1,19 +1,24 @@
 import { useMutation } from "@tanstack/react-query";
 import { TodoDto, todoListApi } from "./api";
 import { useQueryClient } from "@tanstack/react-query";
+import { useSuspenceUser } from "../hooks/use-user";
 
 export function useToggleTodo() {
   const queryClient = useQueryClient();
 
+  const user=useSuspenceUser()
+
   const updateTodoMutation = useMutation({
     mutationFn: todoListApi.updateTodo,
+
+
     onMutate: async (newTodo) => {
       
         await queryClient.cancelQueries({ queryKey: [todoListApi.baseKey] })
     
-        const previousTodos = queryClient.getQueryData(todoListApi.getTodoListQueryOptions().queryKey)
+        const previousTodos = queryClient.getQueryData(todoListApi.getTodoListQueryOptions({userId:user.data.id}).queryKey)
     
-        queryClient.setQueryData<TodoDto[]>(todoListApi.getTodoListQueryOptions().queryKey,
+        queryClient.setQueryData<TodoDto[]>(todoListApi.getTodoListQueryOptions({userId:user.data.id}).queryKey,
          (old) => 
            old?.map((todo)=>todo.id === newTodo.id?{...todo,...newTodo}:todo)
         )
@@ -23,7 +28,7 @@ export function useToggleTodo() {
      
       onError: (_, __, context) => {
         if(context){
-          queryClient.setQueryData(todoListApi.getTodoListQueryOptions().queryKey, context.previousTodos)
+          queryClient.setQueryData(todoListApi.getTodoListQueryOptions({userId:user.data.id}).queryKey, context.previousTodos)
         }
       },
       

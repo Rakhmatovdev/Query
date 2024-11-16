@@ -9,19 +9,20 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { onlineManager } from "@tanstack/react-query";
 import { Loader } from "./loader.tsx";
+import { prefetchAuth } from "../modules/auth/prefetch.ts";
 
 onlineManager.setOnline(navigator.onLine);
 
 const persister = createSyncStoragePersister({
   storage: window.localStorage
 });
+prefetchAuth();
 
 createRoot(document.getElementById("root")!).render(
   <PersistQueryClientProvider
     client={queryClient}
     persistOptions={{ persister }}
     onSuccess={() => {
-      // resume mutations after initial restore from localStorage was successful
       queryClient.resumePausedMutations().then(() => {
         queryClient.invalidateQueries();
       });

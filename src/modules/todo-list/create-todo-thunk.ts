@@ -26,9 +26,9 @@ queryClient.cancelQueries({
     queryKey:[todoListApi.baseKey]
 })
 
-const prevTasks=queryClient.getQueryData(todoListApi.getTodoListQueryOptions().queryKey)
+const prevTasks=queryClient.getQueryData(todoListApi.getTodoListQueryOptions({userId}).queryKey)
 
-queryClient.setQueryData(todoListApi.getTodoListQueryOptions().queryKey,tasks=>[...tasks ?? [],newTodo])
+queryClient.setQueryData(todoListApi.getTodoListQueryOptions({userId}).queryKey,tasks=>[...tasks ?? [],newTodo])
 
 try {
   new MutationObserver(queryClient,{
@@ -36,7 +36,7 @@ try {
 }).mutate(newTodo)
 
 } catch (error) {
-  queryClient.setQueryData(todoListApi.getTodoListQueryOptions().queryKey,prevTasks)  
+  queryClient.setQueryData(todoListApi.getTodoListQueryOptions({userId}).queryKey,prevTasks)  
 } finally{
     queryClient.invalidateQueries({queryKey:[todoListApi.baseKey]})
 }
